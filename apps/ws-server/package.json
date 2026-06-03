@@ -3,16 +3,21 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest",
-    "@repo/typescript-config": "*",
-     "@repo/db": "*"
+    "@repo/typescript-config": "*"
+     
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
     "@types/ws": "^8.18.1",
-    "ws": "^8.21.0"
+    "ws": "^8.21.0",
+    "@repo/db": "*"
   }
 }
