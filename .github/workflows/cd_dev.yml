@@ -32,8 +32,8 @@ jobs:
         
            cd ~/week25_turborepo
            git pull origin main
-           bun install
-           bun run build
-           pm2 restart next-server
-           pm2 restart ws-server
-           pm2 restart http-server
+           /home/ubuntu/.bun/bin/bun install
+           /home/ubuntu/.bun/bin/bun run build
+           /home/ubuntu/.bun/bin/pm2 restart next-server
+           /home/ubuntu/.bun/bin/pm2 restart ws-server
+           /home/ubuntu/.bun/bin/pm2 restart http-server
