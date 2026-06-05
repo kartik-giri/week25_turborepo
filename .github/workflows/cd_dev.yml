@@ -2,7 +2,7 @@ name: Deploy to Dev EC2
 # It is CD workflow which runs when push event is triggered
 
 # On envent push request on main branch
-on:
+'on':
   push:
     branches:
       - main 
