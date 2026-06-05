@@ -39,3 +39,5 @@ jobs:
            /home/ubuntu/.bun/bin/pm2 restart next-server
            /home/ubuntu/.bun/bin/pm2 restart ws-server
            /home/ubuntu/.bun/bin/pm2 restart http-server
+
+# the error we encountering was because This is usually not because Bun or PM2 aren't installed. It's because the SSH Action runs a non-interactive shell, which does not load your .bashrc and therefore doesn't add Bun's bin directory to PATH.
