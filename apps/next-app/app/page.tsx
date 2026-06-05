@@ -6,8 +6,8 @@ const Home = async ()=>{
     <>
     <h1>Development EC2 VM.</h1>
     {/* ? option chaning means if user exist render user if null or undefined just redner undefined */}
-    <h1>{user?.username}</h1> 
-    <h1>{user?.email}</h1>
+    <h1>Name: {user?.username}</h1> 
+    <h1>Password: {user?.email}</h1>
     </>
   )
 }
