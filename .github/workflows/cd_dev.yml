@@ -34,6 +34,8 @@ jobs:
            cd ~/week25_turborepo
            git pull origin main
            /home/ubuntu/.bun/bin/bun install
+
+           cd apps/next-app
            /home/ubuntu/.bun/bin/bun run build --force
 
            /home/ubuntu/.bun/bin/pm2 restart next-server
