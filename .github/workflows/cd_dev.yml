@@ -1,0 +1,39 @@
+name: Deploy to Dev EC2
+# It is CD workflow which runs when push event is triggered
+
+# On envent push request on main branch
+on:
+  push:
+    branches:
+      - main 
+
+# Run this job. Job is deploy on EC2.
+jobs:
+  redeploy_everything:
+    name: Deploying every process on dev EC2
+    #Github runner VM uses ubuntu OS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        #clone the repo on runer VM
+        uses: actions/checkout@v2
+
+      - name: executing remote ssh commands using key
+        #DO SSH from runner VM to our Dev EC2
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 13.207.212.160 
+          username: ubuntu
+          key: ${{secrets.SSHPRIVATEKEY}}
+          port: 22
+          #Runs these commands on my EC2
+          script: |
+        
+           cd ~/week25_turborepo
+           git pull origin main
+           bun install
+           bun run build
+           pm2 restart next-server
+           pm2 restart ws-server
+           pm2 restart http-server
