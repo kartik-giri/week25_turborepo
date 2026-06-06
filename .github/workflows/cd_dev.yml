@@ -38,6 +38,7 @@ jobs:
            find . -type d -name ".next" -exec rm -rf {} +
 
            /home/ubuntu/.bun/bin/bun install
+           /home/ubuntu/.bun/bin/bun run build
 
            /home/ubuntu/.bun/bin/pm2 reload all
            /home/ubuntu/.bun/bin/pm2 restart next-server
