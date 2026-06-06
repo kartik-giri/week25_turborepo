@@ -33,10 +33,11 @@ jobs:
         
            cd ~/week25_turborepo
            git pull origin main
-           
+
            /home/ubuntu/.bun/bin/bun install
            /home/ubuntu/.bun/bin/bun run build 
            
+            ls apps/next-app/.next/BUILD_ID && echo "✅ Build exists" || echo "❌ Build missing"
            /home/ubuntu/.bun/bin/pm2 restart next-server
            /home/ubuntu/.bun/bin/pm2 restart ws-server
            /home/ubuntu/.bun/bin/pm2 restart http-server
