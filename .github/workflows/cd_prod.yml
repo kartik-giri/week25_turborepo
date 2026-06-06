@@ -1,0 +1,46 @@
+name: Deploy to Prod EC2
+
+'on':
+  push:
+    branches:
+      - production
+
+
+jobs:
+  redeploy_everything:
+    name: Deploying every process on production EC2
+ 
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: executing remote ssh commands using key
+        #DO SSH from runner VM to our Dev EC2
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 13.205.31.210 
+          username: ubuntu
+          key: ${{secrets.PRODSSHPRIVATEKEY}}
+          port: 22
+          #Runs these commands on my EC2
+          script: |
+        
+           cd ~/week25_turborepo
+           git pull origin production
+
+           export PATH="/home/ubuntu/.bun/bin:$PATH"
+           /home/ubuntu/.bun/bin/bun install
+           /home/ubuntu/.bun/bin/bun run build 
+           
+           ls apps/next-app/.next/BUILD_ID && echo "✅ Build exists" || echo "❌ Build missing"
+           /home/ubuntu/.bun/bin/pm2 restart next-server
+           /home/ubuntu/.bun/bin/pm2 restart ws-server
+           /home/ubuntu/.bun/bin/pm2 restart http-server
+
+# the error we encountering was because This is usually not because Bun or PM2 aren't installed. It's because the SSH Action runs a non-interactive shell, which does not load your .bashrc and therefore doesn't add Bun's bin directory to PATH.
+# Before:
+# turbo run build → looks for "bun" in PATH → not found → ❌ build fails
+
+# After:
+# export PATH="/home/ubuntu/.bun/bin:$PATH"
+# turbo run build → looks for "bun" in PATH → found ✅ → build succeeds
