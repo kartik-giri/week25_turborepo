@@ -44,6 +44,6 @@ jobs:
            /home/ubuntu/.bun/bin/pm2 delete next-server || true
            cd apps
            cd next-app
-           /home/ubuntu/.bun/bin/pm2 start bun --name "next-server" -- start
+           /home/ubuntu/.bun/bin/pm2 start /home/ubuntu/.bun/bin/bun --name "next-server" -- start
 
 # the error we encountering was because This is usually not because Bun or PM2 aren't installed. It's because the SSH Action runs a non-interactive shell, which does not load your .bashrc and therefore doesn't add Bun's bin directory to PATH.
