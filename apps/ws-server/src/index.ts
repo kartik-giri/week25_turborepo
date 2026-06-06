@@ -15,5 +15,5 @@ ws.on("connection", async(socket)=>{
         console.log(`Error occured while stroing data in db ${e}`);
         socket.send("Database error")
     }
-    socket.send("You are getting back response from WS listening on port 8080")
+    socket.send(`You are getting back response from WS listening on port "8080"`)
 })

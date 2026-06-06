@@ -8,7 +8,7 @@ app.use(express.json())
 app.get("/", (req, res)=>{
     
     res.status(200).json({
-        message: "You are getting response back from updated http server using CD"
+        message: "You are getting response back from updated http server using CD on port 3001"
     })
 });
 
