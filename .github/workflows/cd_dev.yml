@@ -33,8 +33,11 @@ jobs:
         
            cd ~/week25_turborepo
            git pull origin main
+
+           rm -rf .turbo
+           find . -type d -name ".next" -exec rm -rf {} +
+
            /home/ubuntu/.bun/bin/bun install
-           /home/ubuntu/.bun/bin/bun run build  -- --force
 
            /home/ubuntu/.bun/bin/pm2 reload all
            /home/ubuntu/.bun/bin/pm2 restart next-server
