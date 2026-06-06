@@ -35,7 +35,6 @@ jobs:
            git pull origin main
 
            /home/ubuntu/.bun/bin/bun install
-           rm -rf apps/next-app/.next
            export PATH="/home/ubuntu/.bun/bin:$PATH"
            /home/ubuntu/.bun/bin/bun run build 
            
