@@ -35,6 +35,7 @@ jobs:
            git pull origin main
 
            /home/ubuntu/.bun/bin/bun install
+           rm -rf apps/next-app/.next
            /home/ubuntu/.bun/bin/bun run build 
            
             ls apps/next-app/.next/BUILD_ID && echo "✅ Build exists" || echo "❌ Build missing"
