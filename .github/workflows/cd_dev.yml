@@ -35,7 +35,7 @@ jobs:
            git pull origin main
 
            rm -rf .turbo
-           find . -type d -name ".next" -exec rm -rf {} +
+           
 
            /home/ubuntu/.bun/bin/bun install
            /home/ubuntu/.bun/bin/bun run build
