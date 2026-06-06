@@ -36,9 +36,10 @@ jobs:
 
            /home/ubuntu/.bun/bin/bun install
            rm -rf apps/next-app/.next
+           export PATH="/home/ubuntu/.bun/bin:$PATH"
            /home/ubuntu/.bun/bin/bun run build 
            
-            ls apps/next-app/.next/BUILD_ID && echo "✅ Build exists" || echo "❌ Build missing"
+           ls apps/next-app/.next/BUILD_ID && echo "✅ Build exists" || echo "❌ Build missing"
            /home/ubuntu/.bun/bin/pm2 restart next-server
            /home/ubuntu/.bun/bin/pm2 restart ws-server
            /home/ubuntu/.bun/bin/pm2 restart http-server
